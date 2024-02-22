@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML to JS Converter</title>
+    <script>
+        function convertToJS() {
+            var htmlInput = document.getElementById('htmlInput').value;
+            var escapedHTML = escapeHTML(htmlInput);
+            var jsOutput = 'document.body.innerHTML = \'' + escapedHTML + '\';';
+            document.getElementById('jsOutput').textContent = jsOutput;
+        }
+
+        function escapeHTML(html) {
+            return html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '\\\'').replace(/"/g, '&quot;');
+        }
+    </script>
+</head>
+<body>
+    <h1>HTML to JS Converter</h1>
+    <form id="converterForm">
+        <label for="htmlInput">Enter your HTML:</label><br>
+        <textarea id="htmlInput" rows="10" cols="50"></textarea><br>
+        <button type="button" onclick="convertToJS()">Convert to JS</button>
+    </form>
+    <h2>JavaScript Output:</h2>
+    <pre id="jsOutput"></pre>
+</body>
+</html>
